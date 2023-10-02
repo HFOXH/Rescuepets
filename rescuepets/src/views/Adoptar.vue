@@ -55,7 +55,7 @@
     <v-row no-gutters style="margin-top: -30px;">
       <v-col
         cols="12"
-        sm="4"
+        sm="4" v-for="(animal, index) in animales" :key="index"
       >
       <v-card :loading="loading" class="mx-auto my-12" max-width="374">
       <template slot="progress">
@@ -66,25 +66,40 @@
         ></v-progress-linear>
       </template>
 
-      <v-img
-        height="170"
-        src="../assets/CatAdopt.png"
-      ></v-img>
+      <v-carousel height="170" hide-delimiters>
+        <v-carousel-item v-for="(imagen, index) in animal.imagenes" :key="index">
+          <v-img
+            height="170"
+            :src="imagen"
+            class="cover-image"
+            @click="showImageDialog(imagen)"
+          ></v-img>
+        </v-carousel-item>
+      </v-carousel>
 
-      <v-card-title>Lorem ipsum dolor sit amet</v-card-title>
+      <!-- Diálogo para mostrar la imagen en zoom -->
+    <v-dialog v-model="imageDialog" max-width="50%">
+      <v-card>
+        <v-img :src="selectedImage" max-height="50%" />
+        <v-card-actions>
+          <v-btn text @click="imageDialog = false">Cerrar</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
 
+      <v-card-title>{{ animal.nombre }}</v-card-title>
       
       <v-card-text class="container-clasification">
-          <v-chip class="clasification">Sexo</v-chip>
-          <v-chip class="clasification">Edad</v-chip>
-          <v-chip class="clasification">Tamaño</v-chip>
+          <v-chip class="clasification">{{ animal.sexo }}</v-chip>
+          <v-chip class="clasification">{{ animal.edad }} años</v-chip>
+          <v-chip class="clasification">{{ animal.tamaño }}</v-chip>
       </v-card-text>
 
       <v-card-text style="padding: 25px; margin-top:-15px;">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet erat lacus. Donec varius ante ut quam consectetur, sagittis venenatis tellus tempor. Aenean at congue mauris, eleifend faucibus ipsum. </p>
+        <p>{{ animal.descripcion }}</p>
         <div class="contact">
           <div class="location" style="color:#4F129C; font-size: 16px;">
-            <font-awesome-icon :icon="['fas', 'location-dot']"/>&nbsp; Location
+            <font-awesome-icon :icon="['fas', 'location-dot']"/>&nbsp; {{ animal.ubicacion }}
           </div>
           <div class="whatsapp">
              <v-btn class="btn-contact"> Contacto &nbsp; <font-awesome-icon :icon="['fab', 'whatsapp']" style="color: #ffffff; font-size: 20px;"/></v-btn>
@@ -133,14 +148,30 @@ export default {
     itemsSexo: ['Macho', 'Hembra'],
     itemsEdad: ['Menos de 1 año', 'Entre 1 y 3 años', 'Entre 3 y 6 años','Más de 6 años'],
     itemsTamanio: ['Pequeño', 'Mediano', 'Grande'],
+    row: '',
+    animales: [],
+    imageDialog: false,
+    selectedImage: null,
   }),
-
+  mounted() {
+    this.getAnimales();
+  },
   methods: {
     reserve() {
       this.loading = true;
-
       setTimeout(() => (this.loading = false), 2000);
     },
+    showImageDialog(image) {
+      this.selectedImage = image;
+      this.imageDialog = true;
+    },
+    getAnimales(){
+      this.axios.get("/animales").then((response)=>{
+        this.animales = response.data;
+      }).catch((e)=>{
+        console.log(e);
+      });
+    }
   },
   components: {
     Navbar
