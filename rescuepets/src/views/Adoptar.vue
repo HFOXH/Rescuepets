@@ -48,7 +48,7 @@
       ></v-radio>
       <v-radio
         label="Todos"
-        value="radio-2"
+        value="radio-3"
       ></v-radio>
     </v-radio-group>
     <!-- Cards -->

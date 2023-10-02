@@ -1,5 +1,8 @@
 <template>
     <v-container class="container">
+      <div class="circle"></div>
+      <div class="circle1"></div>
+      <div class="circle3"></div>
       <v-row class="fill-height">
         <v-col cols="12">
           <v-card class="fill-height container--card mx-auto" width="800px">
@@ -52,6 +55,41 @@
   .container--card{
       height: 500px;
   }
+  /* Backgrounds */
+.circle {
+    position: absolute;
+    top: -200px;
+    left: -150px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: block;
+    list-style: none;
+    background-image: url(../assets/Effect.png);
+}
+.circle1 {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    background-image: url(../assets/Effect.png);
+    top: 0px;
+    left: 950px;
+    overflow: hidden;
+}
+.circle3 {
+    position: fixed;
+    display: block;
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    background-image: url(/img/Effect.5506ae72.png);
+    top: 315px;
+    left: 215px;
+    bottom: -383px !important;
+    overflow: hidden;
+}
   </style>
   <script>
   export default {
