@@ -17,7 +17,7 @@
                   </span>
                   <h1 style="margin-left: 10px; font-size:40px;">RescuePets</h1>
                 </div>
-                <v-form action="" style="padding-top:1rem;">
+                <v-form @submit.prevent="login" style="padding-top:1rem;">
                     <v-text-field style="margin-left: -25px !important;"
                       label="Correo"
                       outlined
@@ -103,5 +103,25 @@
         },
       }
     },
+    methods: {
+      async login() {
+      try {
+        const response = await this.$axios.post('/login', {
+          username: this.username,
+          password: this.password,
+        });
+
+        // Almacenar el token JWT en localStorage o cookies
+        const token = response.data.token;
+        localStorage.setItem('token', token); // Almacenado en localStorage
+
+        // Redirigir a la página de inicio o realizar otras acciones necesarias
+        this.$router.push('/inicio');
+      } catch (error) {
+        console.error(error);
+        // Manejar errores de autenticación aquí
+      }
+    }
+    }
   }
 </script>

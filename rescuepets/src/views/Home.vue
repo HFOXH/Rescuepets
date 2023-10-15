@@ -1,11 +1,11 @@
 <template>
   <div>
     <Navbar />
-    <v-container style="margin-top: 5rem;">
+    <v-container class="container__main" style="margin-top: 5rem;">
       <v-row>
-        <v-col>
+        <v-col class="col-img">
           <div class="imagen__title">
-            <img src="../assets/Ellipse 1.png" alt="">
+            <img class="img-elipse" src="../assets/Ellipse 1.png" alt="">
           </div>
         </v-col>
         <v-col>
@@ -233,6 +233,15 @@ h1{
 @media screen and (max-width: 800px) {
   .img-register1{
     display: none;
+  }
+  .img-elipse{width: 70%;}
+}
+@media screen and (max-width: 500px) {
+  .col-img{
+    display:none;
+  }
+  .container__main{
+    margin-top: 1rem !important;
   }
 }
 </style>

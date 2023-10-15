@@ -68,6 +68,9 @@
 
       </v-row>
       </v-container>
+      <v-container>
+        <AddAnimal/>
+      </v-container>
       <Footer />
     </div>
   
@@ -112,12 +115,27 @@
 <script>
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import AddAnimal from '../components/AddAnimal'
+
 export default {
   data() {
   },
   components: {
     Navbar,
-    Footer
+    Footer,
+    AddAnimal
+  },
+  methods: {
+    //Obtención animales por usuario
+    getAnimales(){
+      this.axios.get("/animales").then((response)=>{
+        this.animales = response.data;
+      }).catch((e)=>{
+        console.log(e);
+      });
+    }
+    //Agregar nuevo animal
+    
   }
 }
 </script>

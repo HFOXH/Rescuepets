@@ -1,16 +1,33 @@
 import express from 'express'
+import multer from 'multer';
 const router = express.Router();
 
 //importar el modelo 
 import animales from '../models/animales';
 
-// Agregar una mascota
-router.post('/nueva-mascota', async(req, res)=>{
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads/'); // Carpeta donde se almacenan los archivos
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + '-' + file.originalname); // Nombre del archivo
+    },
+  });
+
+  const upload = multer({ storage: storage });
+
+// Agregar un nuevo animal
+router.post('/nuevo-animal', upload.array('imagenes', 5), async(req, res)=>{
     const body = req.body;
     try {
+        const imagenesUrls = req.files.map((archivo) => {
+            return `../uploads/${archivo.filename}`;
+          });
+          body.imagenes = imagenesUrls;
         const data= await animales.create(body);
         res.status(200).json(data);
     } catch (error) {
+        console.log(error)
         return res.status(500).json({
             mensaje:'Ocurrio un error inesperado',
             error
@@ -29,7 +46,7 @@ router.get('/animales', async(req,res)=>{
         })
     }
 });
-//Get con parametro
+//Get con parametro para Editar
 router.get('/buscarParametro/:id', async(req,res)=>{
     const _id=req.params.id;
     try {
@@ -42,7 +59,7 @@ router.get('/buscarParametro/:id', async(req,res)=>{
         })
     }
 });
-//Eliminar
+//Eliminar Animal
 router.delete('/eliminarParametro/:id', async(req,res)=>{
     const _id=req.params.id;
     try {

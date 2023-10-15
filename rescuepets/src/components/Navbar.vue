@@ -1,7 +1,7 @@
 <template>
     <v-app-bar color="primary" scroll-behavior="hide">
         <v-app-bar-title style="display: flex; align-items: center;">
-            <font-awesome-icon icon="shield-dog" style="color:#FFF;" class="iconHome" size="2x" />
+            <font-awesome-icon @click="redirectToHome" icon="shield-dog" style="color:#FFF;" class="iconHome" size="2x" />
             <!-- <v-icon color="#0077b6">fas fa-paw</v-icon> -->
         </v-app-bar-title>
 
@@ -30,10 +30,16 @@
         background-color: rgba(0, 0, 0, 0.1);
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1); 
     }
+    .iconHome:hover{
+        cursor:pointer;
+    }
 </style>
 <script>
 export default {
   methods: {
+    redirectToHome(){
+        this.$router.push('/');
+    },
     redirectToAdopt(){
         this.$router.push('/adoptar');
     },

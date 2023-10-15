@@ -168,6 +168,7 @@ export default {
     getAnimales(){
       this.axios.get("/animales").then((response)=>{
         this.animales = response.data;
+        console.log(this.animales);
       }).catch((e)=>{
         console.log(e);
       });
