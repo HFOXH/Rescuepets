@@ -21,18 +21,19 @@
                     <v-text-field style="margin-left: -25px !important;"
                       label="Correo"
                       outlined
+                      v-model="correo"
                     ></v-text-field>
                     <v-text-field style="margin-left: -25px !important;"
                       :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
                       :rules="[rules.required, rules.min]"
                       :type="show2 ? 'text' : 'password'"
-                      name="input-10-2"
-                      label="Repetir Contraseña"
+                      label="Contraseña"
                       @click:append="show2 = !show2"
                       outlined
+                      v-model="password"
                     ></v-text-field>
                     <div class="mx-auto">
-                        <v-btn color="primary" height="40" width="200" style="margin-left:15%; text-transform: capitalize;">Iniciar Sesión </v-btn>
+                        <v-btn color="primary" height="40" width="200" style="margin-left:15%; text-transform: capitalize;" @click="login()">Iniciar Sesión </v-btn>
                     </div>
                 </v-form>
                 <div style="font-size: 14px; margin-top: 20px;">
@@ -92,11 +93,13 @@
 }
   </style>
   <script>
+  import axios from 'axios';
   export default {
     data () {
       return {
+        correo: '',
         show2: true,
-        password: 'Password',
+        password: '',
         rules: {
           required: value => !!value || 'Required.',
           min: v => v.length >= 8 || 'Minimo 6 caracteres'
@@ -106,22 +109,19 @@
     methods: {
       async login() {
       try {
-        const response = await this.$axios.post('/login', {
-          username: this.username,
-          password: this.password,
+        const response = await axios.post('/login', {
+          correo: this.correo,
+          contrasenia: this.password,
         });
-
         // Almacenar el token JWT en localStorage o cookies
         const token = response.data.token;
         localStorage.setItem('token', token); // Almacenado en localStorage
-
         // Redirigir a la página de inicio o realizar otras acciones necesarias
         this.$router.push('/inicio');
       } catch (error) {
         console.error(error);
-        // Manejar errores de autenticación aquí
       }
-    }
+      },
     }
   }
 </script>

@@ -39,14 +39,17 @@ userSchema.pre('save', function(next){
 });
 
 userSchema.methods.isCorrectPassword = function(contrasenia, callback){
-  bcrypt.compare(contrasenia, this.contrasenia, function(err, same){
+  const self = this; // Almacenar una referencia al objeto 'this' -> para revisar si la convirtio bien
+  bcrypt.compare(contrasenia, this.contrasenia, function(err, result){
     if(err){
-      callback(err);
+      return callback(err);
     }else{
-      callback(err,same);
+      console.log('Contraseña convertida:', self.contrasenia); // Muestra la contraseña convertida
+      return callback(null, result);
     }
-  })
+  });
 }
+
 
 // Convertir a modelo
 const Usuario = mongoose.model("Usuario", userSchema, "Usuarios");

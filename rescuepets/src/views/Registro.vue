@@ -122,6 +122,7 @@ export default {
       axios.post("/register", userData)
         .then(response => {
           console.log('Usuario Registrado con Éxito', response.data);
+          this.$router.push('/login');
         })
         .catch(error => {
           console.error('Error al registrar usuario:', error);

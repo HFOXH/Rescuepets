@@ -29,30 +29,36 @@ router.post('/register', async (req, res) => {
     }
 });
 router.post('/login', async (req, res) => {
+    console.log("llego")
     try {
-        const { username, password } = req.body;
-        const user = await Usuario.findOne({ nombre: username });
+        const { correo, contrasenia } = req.body;
+        console.log(correo);
+        console.log(contrasenia);
 
+        const user = await Usuario.findOne({ correo: correo });
+        console.log(user);
         if (!user) {
+            console.log("usuario no encontrado");
             res.status(401).send('Usuario no encontrado');
             return;
         }
 
-        const isCorrectPassword = await user.isCorrectPassword(password);
-        if (!isCorrectPassword) {
-            res.status(401).send('Contraseña incorrecta');
-            return;
-        }
-
-        // Genera un token JWT para el usuario
-        const token = jwt.sign({ userId: user._id }, 'clave_secreta_del_token', { expiresIn: '1h' });
-
-        res.json({ token });
+        user.isCorrectPassword(contrasenia, (err, isCorrect) => {
+            if (err && !isCorrect) {
+                res.status(401).send('Contraseña incorrecta');
+                return;
+            }
+            // Genera un token JWT para el usuario
+            const jwt = require('jsonwebtoken');
+            const token = jwt.sign({ userId: user._id }, 'clave_secreta_del_token', { expiresIn: '1h' });
+            res.json({ token });
+        });
     } catch (error) {
         console.error(error);
         res.status(500).send('Error al autenticar usuario');
     }
 });
+
 
 // Exportación de router
 module.exports = router;
