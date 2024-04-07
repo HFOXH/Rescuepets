@@ -92,7 +92,7 @@
       <v-card-text class="container-clasification">
           <v-chip class="clasification">{{ animal.sexo }}</v-chip>
           <v-chip class="clasification">{{ animal.edad }} años</v-chip>
-          <v-chip class="clasification">{{ animal.tamaño }}</v-chip>
+          <v-chip class="clasification">{{ animal.tamanio }}</v-chip>
       </v-card-text>
 
       <v-card-text style="padding: 25px; margin-top:-15px;">
@@ -114,7 +114,7 @@
 </template>
 <style>
 .v-main__wrap {
-  background-color: #dbfff2;
+  background-color: #dbfff2ad;
 }
 .clasification{
   border-radius: 5px !important;

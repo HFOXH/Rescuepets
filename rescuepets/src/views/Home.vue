@@ -230,18 +230,30 @@ h1{
   box-shadow: 0px 12px 14px 1px rgba(0,0,0,0.37);
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 880px) {
+  h1{
+    font-size: 50px;
+  }
   .img-register1{
     display: none;
   }
-  .img-elipse{width: 70%;}
+  .img-elipse{width: 70% !important;}
+  .special-container{
+    padding-left:1rem;
+  }
 }
 @media screen and (max-width: 500px) {
+  h1{
+    font-size: 50px;
+  }
   .col-img{
     display:none;
   }
   .container__main{
     margin-top: 1rem !important;
+  }
+  .special-container{
+    padding-left:1rem;
   }
 }
 </style>

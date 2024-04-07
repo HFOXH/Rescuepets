@@ -29,11 +29,8 @@ router.post('/register', async (req, res) => {
     }
 });
 router.post('/login', async (req, res) => {
-    console.log("llego")
     try {
         const { correo, contrasenia } = req.body;
-        console.log(correo);
-        console.log(contrasenia);
 
         const user = await Usuario.findOne({ correo: correo });
         console.log(user);
@@ -51,7 +48,8 @@ router.post('/login', async (req, res) => {
             // Genera un token JWT para el usuario
             const jwt = require('jsonwebtoken');
             const token = jwt.sign({ userId: user._id }, 'clave_secreta_del_token', { expiresIn: '1h' });
-            res.json({ token });
+            const userName = user.nombre;
+            res.json({ token, userName });
         });
     } catch (error) {
         console.error(error);

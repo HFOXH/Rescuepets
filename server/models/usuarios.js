@@ -44,7 +44,6 @@ userSchema.methods.isCorrectPassword = function(contrasenia, callback){
     if(err){
       return callback(err);
     }else{
-      console.log('Contraseña convertida:', self.contrasenia); // Muestra la contraseña convertida
       return callback(null, result);
     }
   });

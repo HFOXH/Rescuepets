@@ -1,47 +1,51 @@
 <template>
-  <v-container class="container">
+  <v-container>
     <div class="circle"></div>
     <div class="bone"></div>
-    <v-row class="fill-height">
-      <v-col cols="12">
-        <v-card class="fill-height container--card mx-auto" width="800px">
-          <v-row class="fill-height">
-            <v-col cols="6" class="fill-height" style="padding: 0;">
-              <img src="../assets/Register.png" alt="" class="fill-height">
-            </v-col>
-            <v-col cols="6" class="justify-end">
-              <div style="display: flex; align-items: center;">
-                <span style="color: #000;">
-                  <font-awesome-icon icon="shield-dog" class="iconHome" size="2x" />
-                </span>
-                <h1 style="margin-left: 10px; font-size:40px;">RescuePets</h1>
-              </div>
-              <v-form @submit.prevent="register" action="" style="padding-top:1rem;">
-                <v-text-field style="margin-left: -25px !important;" label="Nombre" v-model="nombre"
+    <v-card width="1000px" class="mx-auto rounded-xl">
+      <div style="display: flex;">
+        <img src="../assets/Register.png" id="imgLogin" alt="" class="fill-height" style="flex: 0 0 auto; width: 400px;">
+        <div style="flex: 1; align-content: center;">
+          <v-card-title style="display: flex; justify-content: center;">
+            <div style="display: flex; align-items: center;">
+              <span style="color: #000">
+                <font-awesome-icon icon="shield-dog" class="iconHome" size="2x" />
+              </span>
+              <h1 style="margin-left: 10px; font-size: 40px">RescuePets</h1>
+            </div>
+          </v-card-title>
+          <v-card-text class="text-center">
+            <v-form @submit.prevent="register" action="" style="padding-top:1rem;">
+                <v-text-field label="Nombre" v-model="nombre"
                   outlined></v-text-field>
-                <v-text-field style="margin-left: -25px !important;" label="Correo" v-model="correo"
+                <v-text-field label="Correo" v-model="correo"
                   outlined></v-text-field>
-                <v-text-field style="margin-left: -25px !important;" :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
+                <v-text-field :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
                   :rules="[rules.required, v => (v && v.length >= 8) || 'Mínimo 8 caracteres']"
                   :type="show2 ? 'text' : 'password'" name="input-10-2" label="Contraseña" @click:append="show2 = !show2"
                   outlined></v-text-field>
-                <v-text-field v-model="password" style="margin-left: -25px !important;" :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
+                <v-text-field v-model="password" :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
                   :rules="[rules.required, v => (v && v.length >= 8) || 'Mínimo 8 caracteres']"
                   :type="show2 ? 'text' : 'password'" name="input-10-2" label="Repetir Contraseña"
                   @click:append="show2 = !show2" outlined></v-text-field>
                 <div class="mx-auto">
                   <v-btn @click="register()" color="primary" height="40" width="200"
-                    style="margin-left:15%; text-transform: capitalize;">Registrarse &nbsp;<font-awesome-icon
+                    style="text-transform: capitalize;">Registrarse &nbsp;<font-awesome-icon
                       icon="user-plus" style="color:#FFF;" class="iconHome" size="1x" /></v-btn>
                 </div>
               </v-form>
-            </v-col>
-          </v-row>
-        </v-card>
-      </v-col>
-    </v-row>
+            <div style="font-size: 14px; margin-top: 20px">
+              <p>
+                ¿Ya tienes cuenta? <a href="/login">Ingresa aquí</a>
+              </p>
+            </div>
+          </v-card-text>
+        </div>
+      </div>
+    </v-card>
   </v-container>
 </template>
+
 <style>
 .v-main__wrap {
   background-color: #4FCA9E;
@@ -91,6 +95,12 @@
   width: 100%;
   height: 100%;
   background-image: url(../assets/mdi_bone.png);
+}
+
+@media screen and (max-width: 1000px) {
+  #imgLogin {
+    display: none;
+  }
 }
 </style>
 <script>

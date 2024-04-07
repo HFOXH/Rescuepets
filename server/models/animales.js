@@ -15,7 +15,7 @@ const animalSchema = new Schema({
     type: Number,
     required: true, 
   },
-  tamaño: String,
+  tamanio: String,
   descripcion: String,
   ubicacion: String,
   imagenes: [String], // Esto asume que las imágenes son URLs o rutas a archivos

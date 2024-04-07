@@ -22,13 +22,28 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
+// Configuración de Multer
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/'); // Carpeta donde se almacenan los archivos
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + '-' + file.originalname); // Nombre del archivo
+    },
+});
+
+const upload = multer({ storage: storage });
+
+// Ruta estática para servir archivos desde la carpeta 'uploads'
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 //rutas
 app.get('/',function(req,res){
     res.send("hola mundo")
 });
 app.get('/api/prueba', (req, res) => {
     res.json({ mensaje: 'Esta es una prueba exitosa.' });
-  });
+});
 //middleware para vue.js
 app.use('/api',require('./routes/animales'))
 app.use('/api',require('./routes/usuarios'))
