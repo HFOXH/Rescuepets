@@ -1,5 +1,6 @@
 <template>
-  <v-container>
+  <div style="background-color: #4FCA9E !important;">
+    <v-container>
     <div class="circle"></div>
     <div class="bone"></div>
     <v-card width="1000px" class="mx-auto rounded-xl">
@@ -44,15 +45,14 @@
       </div>
     </v-card>
   </v-container>
+  </div>
 </template>
 
 <style>
-.v-main__wrap {
-  background-color: #4FCA9E;
-}
 
 .container {
-  margin-top: 4rem;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
 }
 
 .container--card {

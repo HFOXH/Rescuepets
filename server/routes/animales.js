@@ -61,8 +61,23 @@ router.get('/animales', async(req,res)=>{
         })
     }
 });
+
+//Get animales por usuario
+router.get('/animales/:usuario', async (req, res) => {
+    try {
+        const usuario = req.params.usuario;
+        const animalesUsuario = await animales.find({ usuario: usuario });
+        res.json(animalesUsuario);
+    } catch (error) {
+        return res.status(400).json({
+            mensaje: 'Error',
+            error
+        });
+    }
+});
+
 //Get con parametro para Editar
-router.get('/buscarParametro/:id', async(req,res)=>{
+router.get('/animal/:id', async(req,res)=>{
     const _id=req.params.id;
     try {
         const animal = await animales.findOne({_id});
@@ -75,24 +90,25 @@ router.get('/buscarParametro/:id', async(req,res)=>{
     }
 });
 //Eliminar Animal
-router.delete('/eliminarParametro/:id', async(req,res)=>{
-    const _id=req.params.id;
+router.delete('/eliminar/:id', async (req, res) => {
+    const _id = req.params.id;
     try {
-        const animal = await animales.findByIdAndDelete({_id});
-        if(!animal){
-            return res.status(400).json({
-                mensaje: 'No se encontró mascota',
-                error
-            })
+        const animal = await animales.findByIdAndDelete(_id);
+        if (!animal) {
+            return res.status(404).json({
+                mensaje: 'No se encontró mascota con el ID proporcionado'
+            });
         }
-        res.json(animal);
+        res.json({
+            mensaje: 'Animal eliminado exitosamente'
+        });
     } catch (error) {
-        return res.status(400).json({
-            mensaje: 'Error al eliminar',
-            error
-        })
+        return res.status(500).json({
+            mensaje: 'Error interno del servidor al intentar eliminar el animal',
+            error: error.message
+        });
     }
-})
+});
 //Actualizar
 router.put('/actualizar/:id', async(req,res)=>{
     const _id=req.params.id;

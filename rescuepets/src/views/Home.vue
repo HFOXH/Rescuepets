@@ -12,7 +12,7 @@
           <div class="contenedor__title">
             <h1>RescuePets</h1>
             <p>Somos una fundación sin animo de lucro, nuestra plataforma esta diseñada de la mejor forma; facil y eficaz para que puedas dar en adopción animales y ayudarnos a crecer.</p>
-            <v-btn class="btn__title" color="primary" height="54"
+            <v-btn class="btn__title" color="primary" height="54" @click="goToRegisterPage"
           width="250" size="x-large" >Registrate Aquí &nbsp;<font-awesome-icon icon="dog" style="color:#FFF;" class="iconHome" size="2x" /></v-btn>
           </div>
         </v-col>
@@ -33,7 +33,6 @@
                 <v-btn
                   color="primary"
                   text
-                  @click=""
                 >
                   Lee mas
                 </v-btn>
@@ -53,7 +52,6 @@
                 <v-btn
                   color="primary"
                   text
-                  @click=""
                 >
                   Lee mas
                 </v-btn>
@@ -73,7 +71,6 @@
                 <v-btn
                   color="primary"
                   text
-                  @click=""
                 >
                   Lee mas
                 </v-btn>
@@ -86,11 +83,11 @@
     <div class="grey-box"></div>
     <div class="special-container">
       <div>
-        <v-row>
+        <v-row style="margin:0">
           <v-col cols="12" md="6">
             <h3 class="white--text font-weight-bold">Crea una cuenta y contribuye a la comunidad</h3><br>
             <p class="white--text">Con tu ayuda podemos cambiar el mundo y hacerlo mejor para cada animalito de la calle, generando consciencia humana y mejorando la vida de los animalitos.</p><br>
-            <v-btn elevation="2" large >Regístrate, es gratis &nbsp; <font-awesome-icon :icon="['fas', 'child-reaching']" /></v-btn>
+            <v-btn elevation="2" large class="text-capitalize" @click="goToRegisterPage">Regístrate, es gratis &nbsp; <font-awesome-icon :icon="['fas', 'child-reaching']" /></v-btn>
           </v-col>
           <v-col cols="12" md="6">
             <img class="img-register1" src="../assets/Cuenta.jpg" width="60%" alt="">
@@ -186,7 +183,9 @@
   </div>
 </template>
 <style>
-
+.v-main__wrap {
+  background-color: #fff ;
+}
 h1{
   font-size: 66px;
   font-weight: bold;
@@ -270,12 +269,28 @@ export default {
         { text: 'Dinero', value: 'opcDinero' },
         { text: 'Otro', value: 'opcOtro' },
       ],
+      valid: false,
+      name: '',
+      email: '',
+      phoneNumber: '',
+      errors: '',
+      nameRules: [],
+      emailRules: [],
+      select: null,
+      title: "",
+      checkbox: false,
+      validate: true,
     };
   },
   name: 'Home',
   components: {
     Navbar,
     Footer
-  }
+  },
+  methods:{
+    goToRegisterPage(){
+      window.location.href = "/registro";
+    }
+  },
 }
 </script>

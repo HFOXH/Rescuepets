@@ -1,5 +1,6 @@
 <template>
-  <v-container>
+  <div style="background-color: #4FCA9E !important;">
+    <v-container>
     <div class="circle"></div>
     <div class="circle1"></div>
     <div class="circle3"></div>
@@ -35,14 +36,13 @@
       </div>
     </v-card>
   </v-container>
+  </div>
 </template>
 <style>
-.v-main__wrap {
-  background-color: #4fca9e;
-}
 
 .container {
-  margin-top: 4rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 /* Backgrounds */
