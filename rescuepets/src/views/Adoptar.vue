@@ -74,8 +74,7 @@
                   <font-awesome-icon :icon="['fas', 'location-dot']" />&nbsp; {{ animal.ubicacion }}
                 </div>
                 <div class="whatsapp">
-                  <v-btn class="btn-contact"> Contacto &nbsp; <font-awesome-icon :icon="['fab', 'whatsapp']"
-                      style="color: #ffffff; font-size: 20px;" /></v-btn>
+                  <v-btn class="btn-contact" @click="goToContact(animal.contacto)"> Contacto &nbsp; <font-awesome-icon :icon="['fab', 'whatsapp']" style="color: #ffffff; font-size: 20px;"/></v-btn>
                 </div>
               </div>
             </v-card-text>
@@ -190,6 +189,9 @@ export default {
         console.error("Error fetching animals:", error);
       }
     },
+    goToContact(contacto){
+      window.location.href = 'https://api.whatsapp.com/send?phone=57'+contacto+'&text=Hola%20desde%20Rescupets!';
+    }
   },
   components: {
     Navbar

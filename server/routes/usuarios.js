@@ -63,7 +63,8 @@ router.post('/login', async (req, res) => {
             const jwt = require('jsonwebtoken');
             const token = jwt.sign({ userId: user._id }, 'clave_secreta_del_token', { expiresIn: '1h' });
             const userName = user.nombre;
-            res.json({ token, userName });
+            const celular = user.celular;
+            res.json({ token, userName, celular });
         });
     } catch (error) {
         console.error(error);

@@ -114,6 +114,7 @@ export default {
         const token = response.data.token;
         localStorage.setItem("token", token); // Almacenado en localStorage
         localStorage.setItem("name", response.data.userName);
+        localStorage.setItem("celular", response.data.celular);
         this.$router.push("/cuenta");
       } catch (error) {
         console.error(error);

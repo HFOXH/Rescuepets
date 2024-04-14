@@ -122,6 +122,7 @@ export default {
       formData.append('ubicacion', this.ubicacion);
       formData.append('descripcion', this.descripcion);
       formData.append('usuario', localStorage.getItem('name'));
+      formData.append('contacto', localStorage.getItem('celular'));
       formData.append('estado', 'activo');
 
       for (let i = 0; i < this.imgs.length; i++) {

@@ -4,7 +4,7 @@
       <v-col md="6"><img src="../assets/Imagen1.png" alt="" width="100%"></v-col>
       <v-col md="6" class="column-2">
         <h1 class="text-h2 title">Somos Rescuepets</h1><br>
-        <p style="text-size:14px;">Somos una comunidad que ayuda a los animales vulnerables en situación de calle, dandoles comida, hogar y en adopción.</p>
+        <p style="font-size:14px;">Somos una comunidad que ayuda a los animales vulnerables en situación de calle, dandoles comida, hogar y en adopción.</p>
         <v-col cols="auto">
         <v-btn color="teal" style="color:white;">Registrate!</v-btn>
       </v-col>

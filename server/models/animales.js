@@ -31,7 +31,11 @@ const animalSchema = new Schema({
   estado: {
     type: String,
     required: true, 
-  }
+  },
+  contacto: {
+    type: String,
+    required: true,
+  },
 });
 
 // Convertir a modelo
