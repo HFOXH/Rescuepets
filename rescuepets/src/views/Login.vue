@@ -90,6 +90,7 @@
 }
 </style>
 <script>
+import swal from 'sweetalert';
 import axios from "axios";
 export default {
   data() {
@@ -117,6 +118,7 @@ export default {
         localStorage.setItem("celular", response.data.celular);
         this.$router.push("/cuenta");
       } catch (error) {
+        swal("Error al iniciar sesión", "Datos erroneos", "error");
         console.error(error);
       }
     },

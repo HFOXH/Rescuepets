@@ -13,6 +13,7 @@
     "@fortawesome/vue-fontawesome": "^2.0.10",
     "core-js": "^3.6.5",
     "material-components-web": "^14.0.0",
+    "sweetalert": "^2.1.2",
     "swiper": "^10.2.0",
     "swiper-vue2": "^1.0.10",
     "vee-validate": "^4.11.7",

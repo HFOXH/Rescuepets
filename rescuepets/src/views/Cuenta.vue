@@ -149,6 +149,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import AddAnimal from "../components/AddAnimal";
 import EditAnimal from "../components/EditAnimal";
+import swal from 'sweetalert';
 
 export default {
   data() {
@@ -230,14 +231,31 @@ export default {
       this.animalToEdit = id;
     },
     deleteAnimal(id) {
-      this.axios.delete(`/eliminar/${id}`)
-        .then(response => {
-          console.log('Animal eliminado con éxito:');
-          this.getAnimales();
-        })
-        .catch(error => {
-          console.error('Error al eliminar el animal:');
-        });
+      swal({
+        title: "¿Estas seguro de eliminar la mascota?",
+        text: "Una vez eliminada, no podras recuperar la información.",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          this.axios.delete(`/eliminar/${id}`)
+          .then(() => {
+            console.log('Animal eliminado con éxito:');
+            this.getAnimales();
+            swal("Mascota eliminada con éxito", {
+              icon: "success",
+            });
+          })
+          .catch(error => {
+            swal("Error al eliminar", "Ups.. sucedió algo inesperado, intentalo más tarde.", "error");
+            console.error('Error al eliminar el animal:'+error);
+          });
+        } else {
+          swal("Acción cancelada");
+        }
+      });
     },
     logOut(){
       localStorage.clear();
