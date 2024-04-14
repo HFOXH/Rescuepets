@@ -33,8 +33,8 @@ router.get('/usuarios/:usuario', async (req, res) => {
 
 router.post('/register', async (req, res) => {
     try {
-        const { nombre, correo, contrasenia } = req.body;
-        const user = new Usuario({ nombre, correo, contrasenia });
+        const { nombre, correo, contrasenia, celular } = req.body;
+        const user = new Usuario({ nombre, correo, contrasenia, celular });
         await user.save();
         res.status(200).send('Usuario registrado satisfactoriamente');
     } catch (error) {

@@ -7,13 +7,13 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faDog, faShieldDog, faHandHoldingDollar, faHeart, faCat, faChildReaching, faUserPlus, faLocationDot, faSearch, faPencil, faTrashCan, faPaw  } from '@fortawesome/free-solid-svg-icons'
+import { faDog, faShieldDog, faHandHoldingDollar, faHeart, faCat, faChildReaching, faUserPlus, faLocationDot, faSearch, faPencil, faTrashCan, faPaw, faRotateLeft  } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import './assets/styles.css';
 
 //Recuerda!!! Toca importar icono por icono para poder utilizarlo
-library.add(faShieldDog,faDog,faHandHoldingDollar, faHeart, faCat, faChildReaching, faFacebookF, faUserPlus, faLocationDot, faWhatsapp, faSearch, faPencil, faTrashCan, faPaw)
+library.add(faShieldDog,faDog,faHandHoldingDollar, faHeart, faCat, faChildReaching, faFacebookF, faUserPlus, faLocationDot, faWhatsapp, faSearch, faPencil, faTrashCan, faPaw, faRotateLeft)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

@@ -26,6 +26,14 @@
         <v-radio label="Gato" value="Gato"></v-radio>
         <v-radio label="Perro" value="Perro"></v-radio>
         <v-radio label="Todos" value=""></v-radio>
+        <v-tooltip right>
+          <template v-slot:activator="{ on }">
+            <v-btn elevation="1" icon dark color="black" @click="restoreFilter" style="background-color: white;" v-on="on">
+              <v-icon dark>mdi-cached</v-icon>
+            </v-btn>
+          </template>
+          <span>Refrescar</span>
+        </v-tooltip>
       </v-radio-group>
       <!-- Cards -->
       <v-row no-gutters style="margin-top: -30px;">
@@ -145,6 +153,14 @@ export default {
       }).catch((e) => {
         console.log(e);
       });
+    },
+    restoreFilter(){
+      this.search = "";
+      this.edad = "";
+      this.sexo = "";
+      this.tamanio = "";
+      this.tipo = "";
+      this.filterAnimals();
     },
     async filterAnimals() {
       try {

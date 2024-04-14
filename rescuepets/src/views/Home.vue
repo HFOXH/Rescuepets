@@ -100,7 +100,7 @@
       <p style="text-align: center; color:#a0a0a0;">Puedes ayudar en esta gran causa, simplemente dejanos tus datos</p><br>
       <v-row>
         <v-col cols="12" md="6">
-            <img class="img-register1" src="../assets/DonaCat.jpg" width="100%" alt="">
+            <img class="img-register1" src="../assets/Gato.png" width="100%" alt="">
           </v-col>
           <v-col cols="12" md="6">
             <v-form class="form-donation"

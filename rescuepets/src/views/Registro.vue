@@ -5,7 +5,7 @@
     <div class="bone"></div>
     <v-card width="1000px" class="mx-auto rounded-xl">
       <div style="display: flex;">
-        <img src="../assets/Register.png" id="imgLogin" alt="" class="fill-height" style="flex: 0 0 auto; width: 400px;">
+        <img src="../assets/Register.png" id="imgLogin" alt="" class="fill-height" style="flex: 0 0 auto; width: 500px;">
         <div style="flex: 1; align-content: center;">
           <v-card-title style="display: flex; justify-content: center;">
             <div style="display: flex; align-items: center;">
@@ -21,6 +21,8 @@
                   outlined></v-text-field>
                 <v-text-field label="Correo" v-model="correo"
                   outlined></v-text-field>
+                  <v-text-field label="Número Celular con Whatsapp" v-model="celular"
+                  outlined></v-text-field>
                 <v-text-field :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
                   :rules="[rules.required, v => (v && v.length >= 8) || 'Mínimo 8 caracteres']"
                   :type="show2 ? 'text' : 'password'" name="input-10-2" label="Contraseña" @click:append="show2 = !show2"
@@ -30,9 +32,9 @@
                   :type="show2 ? 'text' : 'password'" name="input-10-2" label="Repetir Contraseña"
                   @click:append="show2 = !show2" outlined></v-text-field>
                 <div class="mx-auto">
-                  <v-btn @click="register()" color="primary" height="40" width="200"
-                    style="text-transform: capitalize;">Registrarse &nbsp;<font-awesome-icon
-                      icon="user-plus" style="color:#FFF;" class="iconHome" size="1x" /></v-btn>
+                  <v-btn @click="register()" :disabled="!valid" color="primary" height="40" width="200" style="text-transform: capitalize;">
+                    Registrarse &nbsp;<font-awesome-icon icon="user-plus" style="color:#FFF;" class="iconHome" size="1x" />
+                  </v-btn>
                 </div>
               </v-form>
             <div style="font-size: 14px; margin-top: 20px">
@@ -118,7 +120,8 @@ export default {
         required: value => !!value || 'Required.',
         min: v => v.length >= 8 || 'Minimo 8 caracteres'
       },
-      show2: ''
+      show2: false,
+      valid: false,
     };
   },
   methods: {
@@ -126,7 +129,8 @@ export default {
       const userData = {
         nombre: this.nombre,
         correo: this.correo,
-        contrasenia: this.password
+        contrasenia: this.password,
+        celular: this.celular
       };
     
       axios.post("/register", userData)
@@ -138,6 +142,27 @@ export default {
           console.error('Error al registrar usuario:', error);
         });
     },
+    validateFields() {
+      if (this.nombre && this.correo && this.celular && this.password) {
+        this.valid = true;
+      } else {
+        this.valid = false;
+      }
+    }
+  },
+  watch: {
+    nombre() {
+      this.validateFields();
+    },
+    correo() {
+      this.validateFields();
+    },
+    celular() {
+      this.validateFields();
+    },
+    password() {
+      this.validateFields();
+    }
   },
 };
 </script>

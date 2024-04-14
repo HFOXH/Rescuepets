@@ -109,6 +109,7 @@ export default {
         .then(response => {
           console.log('Animal actualizado con éxito:', response.data);
           this.reset();
+          window.location.reload();
         })
         .catch(error => {
           console.error('Error al actualizar el animal:', error.response.data);
