@@ -8,7 +8,8 @@ const app = express();
 
 //Conexion BD
 const mongoose = require('mongoose');
-const url = 'mongodb://localhost:27017/Rescuepets'
+//const url = 'mongodb://localhost:27017/Rescuepets'
+const url = 'mongodb+srv://santiagofoxcardenas:rRBzJtojDoKqYqi9@cluster0.odldn5u.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
 const options = {useNewUrlParser: true,  useUnifiedTopology: true};
 
 mongoose.connect(url,options).then(
