@@ -44,7 +44,7 @@ userSchema.pre('save', function(next){
 
 userSchema.methods.isCorrectPassword = function(contrasenia, callback){
   const self = this; // Almacenar una referencia al objeto 'this' -> para revisar si la convirtio bien
-  bcrypt.compare(contrasenia, this.contrasenia, function(err, result){
+  bcrypt.compare(contrasenia, self.contrasenia, function(err, result){
     if(err){
       return callback(err);
     }else{

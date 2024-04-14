@@ -47,7 +47,7 @@ router.post('/login', async (req, res) => {
         const { correo, contrasenia } = req.body;
 
         const user = await Usuario.findOne({ correo: correo });
-        console.log(user);
+
         if (!user) {
             console.log("usuario no encontrado");
             res.status(401).send('Usuario no encontrado');
@@ -55,7 +55,7 @@ router.post('/login', async (req, res) => {
         }
 
         user.isCorrectPassword(contrasenia, (err, isCorrect) => {
-            if (err && !isCorrect) {
+            if (err || !isCorrect) {
                 res.status(401).send('Contraseña incorrecta');
                 return;
             }
@@ -71,7 +71,6 @@ router.post('/login', async (req, res) => {
         res.status(500).send('Error al autenticar usuario');
     }
 });
-
 
 // Exportación de router
 module.exports = router;

@@ -6,10 +6,11 @@
         <div class="img-account">
           <img src="../assets/1Perro.jpg" alt="" />
         </div>
-        <v-card class="main-card"><br>
-          <h3 class="my-1">Usuario: {{ userName }}</h3>
-          <h3 class="my-1">Correo: {{ correo }}</h3>
-          <h3 class="my-1">Celular: {{ celular }}</h3><br>
+        <v-card class="main-card">
+          <h3 class="text-center">Cuenta RescuePets</h3>
+          <p class="my-1"><b>Usuario:</b> {{ userName }}</p>
+          <p class="my-1"><b>Correo:</b> {{ correo }}</p>
+          <p class="my-1"><b>Celular:</b> {{ celular }}</p><br>
           <h4 class="text-center"><i>“{{ frases[showedFrase] }}”</i></h4>
           <div class="text-end">
             <v-btn elevation="2" large class="text-capitalize mt-8" @click="logOut">Cerrar Sesión</v-btn>
