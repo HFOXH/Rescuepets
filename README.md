@@ -26,24 +26,13 @@ Rescuepets es una aplicación web desarrollada con el objetivo de facilitar la a
 4. Inicia el servidor backend ejecutando `npm run devbabel` en el directorio `backend`.
 5. Inicia el servidor frontend ejecutando `npm run serve` en el directorio `frontend`.
 
-## Contribución
-
-¡Las contribuciones son bienvenidas! Si deseas contribuir a este proyecto, por favor sigue estos pasos:
-
-1. Haz un fork del repositorio.
-2. Crea una rama nueva (`git checkout -b feature/nueva-funcionalidad`).
-3. Realiza tus cambios y asegúrate de que todo funcione correctamente.
-4. Haz commit de tus cambios (`git commit -am 'Agrega nueva funcionalidad'`).
-5. Haz push a la rama (`git push origin feature/nueva-funcionalidad`).
-6. Crea un nuevo Pull Request.
-
-## Equipo
+## 🧑‍💻 Equipo
 
 - [Santiago Cárdenas](https://github.com/hfoxh) - Desarrollador
 - [Brayan Galindo](https://github.com/brayan-galindo) - Desarrollador
 - [Eddy Osorio](https://github.com/eddy-osorio) - Desarrollador
 
-## Licencia
+## Licencia 📕
 
 Este proyecto está licenciado bajo la Licencia Creative Commons Atribución-NoComercial-SinDerivadas 4.0 Internacional por Santiago Cárdenas.
 
