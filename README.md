@@ -45,5 +45,7 @@ Rescuepets es una aplicación web desarrollada con el objetivo de facilitar la a
 
 ## Licencia
 
-Este proyecto está licenciado bajo la [Licencia MIT](LICENSE) por Santiago Cárdenas.
+Este proyecto está licenciado bajo la Licencia Creative Commons Atribución-NoComercial-SinDerivadas 4.0 Internacional por Santiago Cárdenas.
+
+
 
